@@ -12,8 +12,14 @@ double Sin(double x);
 
 int main()
 {
-    GSAlgorithm example(Sin, 0.0 , 12.28, 5.0, 0.01); 
-    Run(example);
+    GSAlgorithm example1(Sin, 0.0 , 12.28, 2.0, 0.005);
+    auto sett = example1.GetmainSequence();
+    Run(example1);
+    GSAlgorithm example2(Sin, 0.0, 12.28, 2.0, 0.005);
+    example2.Solve();
+    auto result = example2.GetResult();
+
+
 }
 
 void Run(GSAlgorithm &gsa)
@@ -22,13 +28,22 @@ void Run(GSAlgorithm &gsa)
     {
         bool end = gsa.Step();
         auto mp = gsa.GetCurrentMinimum();
-        auto lp = gsa.GetLastPoint();
-        std::cout << "Step: " << i << "  Min: x = \t" << mp.first << "\ty = \t" << mp.second << "\t  Current: x = \t" << lp.first << "\ty = \t" << lp.second << " \t" << end << std::endl;
+        auto lp = gsa.GetLastTrial();
+        std::cout << "Step: " << i << "  Min: x = \t" << mp.x << "\ty = \t" << mp.y << "\t  Current: x = \t" <<lp.x << "\ty = \t" << lp.y << " \t" << end << std::endl;
     }
 }
 
 double Sin(double x)
 {
     return std::sin(x);
+}
+
+double SummSin(double x)
+{   
+    auto CalcA = [&](int iter) -> double
+    {
+        
+    };
+    for (i)
 }
 
